@@ -2,7 +2,7 @@ package com.dellahi.buyAny.Model;
 
 import org.springframework.stereotype.Component;
 
-@Entity("categoryBean")
+//@Entity("categoryBean")
 public class Category {
 
     private String categoryName;
