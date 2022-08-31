@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity(name= "User")
 @Table(
-        name = "student",
+        name = "user",
         uniqueConstraints = {
                 @UniqueConstraint(name = "user_email_unique", columnNames = "user_email")
         }
@@ -12,16 +12,15 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @Column(
-            name = "id",
-            updatable = false
-    )
+    @Column(name = "user_name")
     private String userName;
+
     @Column(
             name = "user_email",
             nullable = false
     )
     private String userEmail;
+
     @Column(
             name = "password",
             nullable = false
@@ -32,6 +31,9 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.userEmail= userEmail;
+    }
+
+    public User() {
     }
 
     public String getUserName()

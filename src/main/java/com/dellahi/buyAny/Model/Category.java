@@ -1,11 +1,18 @@
 package com.dellahi.buyAny.Model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
 
-//@Entity("categoryBean")
+@Entity(name = "category")
 public class Category {
 
+    @Id
+    @Column(name = "category_name")
     private String categoryName;
+
+    @Column(
+            name = "description",
+            nullable = false
+    )
     private String description;
 
     public Category(String categoryName) {
@@ -18,6 +25,9 @@ public class Category {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public Category() {
     }
 
     public String getDescription() {

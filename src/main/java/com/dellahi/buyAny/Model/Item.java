@@ -1,25 +1,45 @@
 package com.dellahi.buyAny.Model;
 
+import javax.persistence.*;
+
+@Entity(name = "item")
 public class Item {
 
-    private int itemID;
-    private String itemName;
-    private String itemDescription;
-    private int price;
-    private String category;
+    @Id
+    @Column(name = "item_id")
+    private Long itemID;
 
-    public Item(int itemID, String itemName, int price, String category) {
+    @Column(
+            name = "item_name",
+            nullable = false
+    )
+    private String itemName;
+
+    @Column(name = "item_description")
+    private String itemDescription;
+
+    public Item() {
+    }
+
+    @Column(name = "price")
+    private int price;
+
+    @ManyToOne
+    @JoinColumn(name = "category_name", nullable = false)
+    private Category category;
+
+    public Item(Long itemID, String itemName, int price, Category category) {
         this.itemID = itemID;
         this.itemName = itemName;
         this.price = price;
         this.category = category;
     }
 
-    public int getItemID() {
+    public Long getItemID() {
         return itemID;
     }
 
-    public void setItemID(int itemID) {
+    public void setItemID(Long itemID) {
         this.itemID = itemID;
     }
 
@@ -47,11 +67,11 @@ public class Item {
         this.price = price;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
