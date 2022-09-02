@@ -1,7 +1,8 @@
-package com.dellahi.buyAny.Services;
+package com.dellahi.buyAny.Services.Impl;
 
 import com.dellahi.buyAny.Model.Item;
 import com.dellahi.buyAny.Repository.ItemRepository;
+import com.dellahi.buyAny.Services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
