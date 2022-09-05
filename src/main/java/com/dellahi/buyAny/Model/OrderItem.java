@@ -1,8 +1,14 @@
 package com.dellahi.buyAny.Model;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity(name="order_item")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class OrderItem {
 
     @Id
@@ -22,56 +28,16 @@ public class OrderItem {
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    public OrderItem() {
-    }
     @Transient
     private int totalPrice;
 
-    public OrderItem(Long id, Order order, Item item, int quantity) {
-        this.id = id;
+    public OrderItem(Order order, Item item, int quantity) {
         this.order = order;
         this.item = item;
         this.quantity = quantity;
     }
 
-    public Order getOrderNumber() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItemID(Item item) {
-        this.item = item;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
     public int getTotalPrice() {
         return this.quantity*this.item.getPrice();
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderItems{" +
-                "orderNumber=" + order +
-                ", itemID=" + item +
-                ", quantity=" + quantity +
-                ", item=" + item +
-                '}';
     }
 }

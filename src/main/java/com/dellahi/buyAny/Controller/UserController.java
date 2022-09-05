@@ -1,30 +1,33 @@
 package com.dellahi.buyAny.Controller;
 
 import com.dellahi.buyAny.Model.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.dellahi.buyAny.Services.Impl.UserDetailsServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Arrays;
-import java.util.List;
 
 @RestController
 @RequestMapping("/buyAny/v1/users")
 public class UserController {
 
-    private static final List<User> USERS = Arrays.asList(
-            new User("User1","","123"),
-            new User("User2","","1234"),
-            new User("User3","","12345")
-    );
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
 
-    @GetMapping(path = "{userName}")
-    public User getUser(@PathVariable("userName") String userName){
-        return USERS.stream()
-                .filter(user -> userName.equals(user.getUserName()))
-                .findFirst()
-                .orElseThrow(()-> new IllegalStateException("User " + userName + "does not exists"));
+    @PostMapping(path = "/registration")
+    /*@ApiOperation(value = "Account creation", response = User.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Account successfully created"),
+            @ApiResponse(code = 400, message = "Incorrect Request") })*/
 
+    public User register(@RequestBody User user) {
+        return userDetailsService.saveUser(user);
     }
+
+    /*@GetMapping(path = "{userName}")
+    public User getUser(@PathVariable("userName") String userName){
+        return ;
+
+    }*/
 }
