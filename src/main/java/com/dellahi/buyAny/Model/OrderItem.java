@@ -24,16 +24,14 @@ public class OrderItem {
 
     public OrderItem() {
     }
-
-    @Column(name = "total_price")
+    @Transient
     private int totalPrice;
 
-    public OrderItem(Long id, Order order, Item item, int quantity, int totalPrice) {
+    public OrderItem(Long id, Order order, Item item, int quantity) {
         this.id = id;
         this.order = order;
         this.item = item;
         this.quantity = quantity;
-        this.totalPrice = totalPrice;
     }
 
     public Order getOrderNumber() {
@@ -60,7 +58,7 @@ public class OrderItem {
         this.quantity = quantity;
     }
     public int getTotalPrice() {
-        return totalPrice;
+        return this.quantity*this.item.getPrice();
     }
 
     public void setTotalPrice(int totalPrice) {
