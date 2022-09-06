@@ -1,4 +1,4 @@
-package com.dellahi.buyAny.Model;
+package com.dellahi.buyAny.Model.Enum;
 
 public enum UserRole {
     BUYER,

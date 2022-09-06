@@ -1,9 +1,14 @@
 package com.dellahi.buyAny.Model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name= "User")
 @Table(
         name = "user",
@@ -11,11 +16,6 @@ import javax.persistence.*;
                 @UniqueConstraint(name = "user_email_unique", columnNames = "user_email")
         }
 )
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 public class User {
 
     @Id

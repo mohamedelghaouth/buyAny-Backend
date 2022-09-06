@@ -1,15 +1,15 @@
 package com.dellahi.buyAny.Services;
 
-import com.dellahi.buyAny.Model.User;
+import com.dellahi.buyAny.Dto.UserDto;
 
 import java.util.List;
 
 public interface UserService {
 
-    User saveUser(User user);
-    User updateUser(User user);
-    void deleteUser(User user);
+    UserDto saveUser(UserDto userDto);
+    UserDto updateUser(UserDto userDto);
+    void deleteUser(UserDto userDto);
     void deleteUserByUsername(String username);
-    User getUserByUsername(String username);
-    List<User> getAllUsers();
+    UserDto getUserByUsername(String username);
+    List<UserDto> getAllUsers();
 }
