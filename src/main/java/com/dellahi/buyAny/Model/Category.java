@@ -1,7 +1,14 @@
 package com.dellahi.buyAny.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "category")
 public class Category {
 
@@ -17,32 +24,5 @@ public class Category {
 
     public Category(String categoryName) {
         this.categoryName = categoryName;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public Category() {
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "categoryName='" + categoryName + '\'' +
-                ", Description='" + description + '\'' +
-                '}';
     }
 }
